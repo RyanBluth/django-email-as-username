@@ -1,3 +1,4 @@
+from __future__ import absolute_import
 from django.core.management.commands import loaddata
 from emailusernames.models import unmonkeypatch_user, monkeypatch_user
 

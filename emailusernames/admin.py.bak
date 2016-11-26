@@ -1,7 +1,6 @@
 """
 Override the add- and change-form in the admin, to hide the username.
 """
-from __future__ import absolute_import
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from django.contrib import admin

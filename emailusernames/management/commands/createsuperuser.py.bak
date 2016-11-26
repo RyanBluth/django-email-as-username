@@ -3,7 +3,6 @@ Management utility to create superusers.
 Replace default behaviour to use emails as usernames.
 """
 
-from __future__ import absolute_import
 import getpass
 import re
 import sys
@@ -13,7 +12,6 @@ from django.core import exceptions
 from django.core.management.base import BaseCommand, CommandError
 from django.utils.translation import ugettext as _
 from emailusernames.utils import get_user, create_superuser
-from six.moves import input
 
 def is_valid_email(value):
     # copied from https://github.com/django/django/blob/1.5.1/django/core/validators.py#L98
@@ -64,7 +62,7 @@ class Command(BaseCommand):
                 # Get an email
                 while 1:
                     if not email:
-                        email = input('E-mail address: ')
+                        email = raw_input('E-mail address: ')
 
                     try:
                         is_valid_email(email)

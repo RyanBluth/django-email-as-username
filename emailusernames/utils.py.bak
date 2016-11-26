@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 import base64
 import hashlib
 import os
@@ -56,7 +55,7 @@ def create_user(email, password=None, is_staff=None, is_active=None):
     """
     try:
         user = User.objects.create_user(email, email, password)
-    except IntegrityError as err:
+    except IntegrityError, err:
         regexp = '|'.join(re.escape(e) for e in _DUPLICATE_USERNAME_ERRORS)
         if re.match(regexp, err.message):
             raise IntegrityError('user email is not unique')

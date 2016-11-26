@@ -1,13 +1,12 @@
-from __future__ import absolute_import
-from django.core.management.commands import dumpdata
+from django.core.management.commands import loaddata
 from emailusernames.models import unmonkeypatch_user, monkeypatch_user
 
 
-class Command(dumpdata.Command):
+class Command(loaddata.Command):
 
     """
-    Override the built-in dumpdata command to un-monkeypatch the User
-    model before dumping, to allow usernames to be dumped correctly
+    Override the built-in loaddata command to un-monkeypatch the User
+    model before loading, to allow usernames to be loaded correctly
     """
 
     def handle(self, *args, **kwargs):
@@ -15,3 +14,4 @@ class Command(dumpdata.Command):
         ret = super(Command, self).handle(*args, **kwargs)
         monkeypatch_user()
         return ret
+        
